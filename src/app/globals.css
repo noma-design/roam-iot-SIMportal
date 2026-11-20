@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+:root {
+  --roam-navy: #003a5d;
+  --roam-teal: #00adba;
+  --roam-teal-soft: #e6f9fa;
+  --roam-ink: #676a6c;
+  --roam-muted: #666666;
+  --roam-label: #878e9f;
+  --roam-placeholder: #9ca3af;
+  --roam-nav-idle: #8a94a6;
+  --roam-border: #d1d5db;
+  --roam-border-table: #d7d7d7;
+  --roam-surface: #f1f4f7;
+  --roam-surface-soft: #f9fafb;
+  --roam-footer: #666666;
+  --roam-danger: #e55353;
+  --roam-warn: #f59e0b;
+  --roam-success: #22c55e;
+  --roam-white: #ffffff;
+
+  /* Grid — desktop default */
+  --grid-columns: 12;
+  --grid-gutter: 24px;
+  --grid-margin: 80px;
+  --sidebar-width: 200px;
+  --header-height: 108px;
+}
+
+@theme inline {
+  --color-roam-navy: var(--roam-navy);
+  --color-roam-teal: var(--roam-teal);
+  --color-roam-teal-soft: var(--roam-teal-soft);
+  --color-roam-ink: var(--roam-ink);
+  --color-roam-muted: var(--roam-muted);
+  --color-roam-label: var(--roam-label);
+  --color-roam-placeholder: var(--roam-placeholder);
+  --color-roam-nav-idle: var(--roam-nav-idle);
+  --color-roam-border: var(--roam-border);
+  --color-roam-border-table: var(--roam-border-table);
+  --color-roam-surface: var(--roam-surface);
+  --color-roam-surface-soft: var(--roam-surface-soft);
+  --color-roam-footer: var(--roam-footer);
+  --color-roam-danger: var(--roam-danger);
+  --color-roam-warn: var(--roam-warn);
+  --color-roam-success: var(--roam-success);
+  --color-roam-white: var(--roam-white);
+  --font-sans: var(--font-roboto);
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1200px;
+}
+
+@media (max-width: 1199px) {
+  :root {
+    --grid-columns: 8;
+    --grid-gutter: 16px;
+    --grid-margin: 32px;
+    --sidebar-width: 176px;
+    --header-height: 96px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --grid-columns: 4;
+    --grid-gutter: 16px;
+    --grid-margin: 16px;
+    --sidebar-width: 0px;
+    --header-height: 72px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--roam-surface);
+  color: var(--roam-navy);
+  font-family: var(--font-roboto), "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+.portal-page {
+  position: relative;
+  isolation: isolate;
+}
+
+.portal-page::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 8% 8%, rgba(0, 173, 186, 0.08), transparent 32%),
+    radial-gradient(circle at 88% 72%, rgba(0, 58, 93, 0.06), transparent 36%);
+}
+
+.portal-content {
+  position: relative;
+  z-index: 1;
+  padding-inline: var(--grid-margin);
+}
+
+.card {
+  background: var(--roam-white);
+  border-radius: 12px;
+  border: 1px solid transparent;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.06);
+  padding: 20px;
+  transition: box-shadow 150ms ease, border-color 150ms ease;
+}
+
+@media (min-width: 1200px) {
+  .card:hover {
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Table row hover — Figma 118:3420 (paint on td; tr bg is ignored with border-collapse) */
+  table tbody tr td {
+    transition: background-color 150ms ease;
+  }
+
+  table tbody tr:hover td {
+    background-color: rgba(98, 99, 101, 0.1);
+  }
+}
+
+/* Hide native scrollbar; custom slider is rendered by TableHScroll */
+.table-h-scroll-pane {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.table-h-scroll-pane::-webkit-scrollbar {
+  display: none;
+}
